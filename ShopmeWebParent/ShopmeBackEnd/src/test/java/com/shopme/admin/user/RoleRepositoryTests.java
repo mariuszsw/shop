@@ -28,17 +28,16 @@ public class RoleRepositoryTests {
 
 		assertThat(savedRole.getId()).isGreaterThan(0);
 	}
-	
+
 	@Test
 	public void testCreateRestRoles() {
-		Role roleSalesperson = new Role("Salesperson", "manage product price, custores, shipping, orders and sales report");
+		Role roleSalesperson = new Role("Salesperson",
+				"manage product price, custores, shipping, orders and sales report");
 		Role roleEditor = new Role("Editor", "manage categories, brands, shipping, orders and sales report");
 		Role roleShipper = new Role("Sipper", "view products, view orders and update order status");
 		Role roleAssistant = new Role("Assistant", "manage questions and reviews");
 
 		repo.saveAll(List.of(roleSalesperson, roleEditor, roleShipper, roleAssistant));
 
-
-		
 	}
 }
