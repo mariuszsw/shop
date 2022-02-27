@@ -7,7 +7,6 @@
 		<artifactId>ShopmeWebParent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.shopme</groupId>
 	<artifactId>ShopmeBackEnd</artifactId>
 	<name>ShopmeBackEnd</name>
 	<description>Shopme Admin project</description>
