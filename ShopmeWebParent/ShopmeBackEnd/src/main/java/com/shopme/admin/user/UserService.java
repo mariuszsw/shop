@@ -31,7 +31,7 @@ public class UserService {
 	}
 
 	public void save(User user) {
-		boolean isUpdatingUser = (user.getId() == null);
+		boolean isUpdatingUser = (user.getId() != null);
 		
 		if (isUpdatingUser) {
 			User existingUser = userRepo.findById(user.getId()).get();
@@ -77,6 +77,16 @@ public class UserService {
 		} catch(NoSuchElementException ex) {
 			throw new UserNotFoundException("Could not find any user with ID " + id);
 		}
+	}	
+	
+	public void delete(Integer id) throws UserNotFoundException {
+		Long countById = userRepo.countById(id);
+		
+		if(countById == null || countById ==0) {
+			throw new UserNotFoundException("Could not find any user with Id " + id);
+		}
+		
+		userRepo.deleteById(id);
 	}	
 }
 
