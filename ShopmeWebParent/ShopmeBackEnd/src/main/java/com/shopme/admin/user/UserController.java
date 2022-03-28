@@ -69,7 +69,7 @@ public class UserController {
 	}	
 	
 	@GetMapping("/users/delete/{id}")
-	public String deleteUser(@PathVariable(name = "id") Integer id, Model model, RedirectAttributes redirectAtributes) {
+	public String deleteUser(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAtributes) {
 		try {			
 			service.delete(id);
 
