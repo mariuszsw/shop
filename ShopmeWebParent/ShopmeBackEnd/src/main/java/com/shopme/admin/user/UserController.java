@@ -55,10 +55,12 @@ public class UserController {
 			
 			String uploadDir = "user-photos/" + savedUser.getId();
 			
+			FileUploadUtil.cleanDir(uploadDir);
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-		}		
-		
-		service.save(user);
+		} else {		
+			if(user.getPhotos().isEmpty()) user.setPassword(null);
+				service.save(user);
+		}
 		
 		redirectAtributes.addFlashAttribute("message", "The user has been saved successfully.");
 		

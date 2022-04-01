@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -127,6 +129,14 @@ public class User {
 				+ ", roles=" + roles + "]";
 	}
 	
-	
-
+	@Transient
+	public String getPhotosImagePath() {
+		
+		if(id == null || photos == null) 
+		{
+			return "/images/default-user.png";
+		}		
+		
+		else return "/user-photos/" + this.id + "/" + this.photos;
+	}
 }

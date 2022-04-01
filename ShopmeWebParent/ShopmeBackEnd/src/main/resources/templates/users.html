@@ -90,7 +90,10 @@
 			<tbody>
 				<tr th:each="user : ${listUsers}">	
 					<td>[[${user.id}]] </td>
-					<td><span class="fa-solid fa-image-portrait fa-3x icon-silver"></span></td>
+					<td>
+						<img th:if="${user.photos == null}" th:src="@{${user.getPhotosImagePath}}"/>
+						<img th:if="${user.photos != null}" th:src="@{${user.getPhotosImagePath}}" style="width: 100px; height: 100px"/>
+					</td>
 					<td>[[${user.email}]] </td>
 					<td>[[${user.firstName}]] </td>
 					<td>[[${user.lastName}]] </td>
@@ -102,7 +105,7 @@
 					</td>
 						
 					<td>
-					<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"></a> &nbsp;
+					<a class="fa-solid fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}" title="Edit this user"> &nbsp; </a>
 					<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'users/delete/' + ${user.id}}" th:userId = "${user.id}" title="Delete this user"></a> 
 					</td>			
 				</tr>		
